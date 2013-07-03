@@ -65,3 +65,28 @@ get "/post/:id" do
   erb :post_by_id
 end
 
+post "/post/:id/new_comment" do
+  post = Post.find(params[:id])
+  comment = Comment.create(comment: params[:comment])
+  current_user.comments << comment
+  post.comments << comment
+  redirect "/post/#{post.id}"
+
+end
+
+get "/post/create/:id" do
+   @user = User.find(params[:id])
+  erb :new_post
+end
+
+post '/create/posts/:id' do
+
+  post = Post.create(params[:post])
+  current_user.posts << post
+
+  redirect "/post/#{post.id}"
+
+
+end
+
+

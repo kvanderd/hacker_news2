@@ -1,0 +1,8 @@
+<h2>Create a New Post!!</h2>
+<form method='Post' action='/create/posts/<%= @user.id %>'>
+  <p><input type='text' name='post[title]' placeholder='Title'></p>
+  <p><textarea name='post[body]' placeholder='Your Post'></textarea></p>
+  <input type='submit' value='Create Post'>
+</form>
+
+

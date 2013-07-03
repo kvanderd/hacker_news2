@@ -1,6 +1,10 @@
 <h2><%= @post.title %></h2>
 <p><%= @post.body %></p>
 
+<form method="post" action="/post/<%= @post.id %>/new_comment">
+  <p><textarea name="comment"></textarea></p>
+  <p><input type="submit" value="create comment"></p>
+</form>
 
 <h2>Comments</h2>
 <h2><% @post.comments.each do |comment|  %></h2>

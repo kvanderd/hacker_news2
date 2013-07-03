@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
 
+
   include BCrypt
   # Remember to create a migration!
   def password
