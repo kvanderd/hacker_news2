@@ -1,0 +1,8 @@
+<h1>User Dashboard</h1>
+
+<h2>Welcome <%= @user.user_name  %></h2>
+<p><%= @user.created_at  %></p>
+
+
+<h3><a href='/user/<%= @user.id %>/posts'>Show Posts</a></h3>
+<h3><a href='/user/<%= @user.id %>/comments'>Show Comments</a></h3>

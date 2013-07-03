@@ -1,0 +1,4 @@
+<h2><%= @user.user_name %>'s Comments</h2>
+<% @comments.each do |comment| %>
+  <p><%= comment.comment %></p>
+<% end %>
