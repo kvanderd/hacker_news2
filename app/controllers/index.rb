@@ -6,87 +6,18 @@ get '/' do
   erb :index
 end
 
-get "/create" do
-  erb :create_user
-end
+
+# get "/upvote/:id/:id" do
+#  puts "I am here"
+# end
 
 
-post '/create' do
-  puts params
-  user = User.create(params[:user])
-  if user
-    session[:user] = user.id
-  end
-  redirect "/"
-end
-
-get '/logout' do
-
-  session.clear
-  redirect '/'
-
-end
-
-get "/login" do
-  erb :login_user
-end
-
-post "/login" do 
-  user = User.find_by_user_name(params[:user][:user_name])
-  authenticate = User.authenticate(params[:user])
-  if authenticate
-    session[:user] = user.id
-  end
-  redirect "/"
-end
-
-
-get "/user/:id" do
-  @user = User.find(params[:id])
-  erb :user_by_id
-end
-
-get '/user/:id/posts' do
-  @user = User.find(params[:id])
-  @posts = @user.posts.all
-  erb :users_posts 
-end
-
-get '/user/:id/comments' do
-  @user = User.find(params[:id])
-  @comments = @user.comments.all
-  erb :user_comments 
-end
-
-
-get "/post/:id" do
-  puts params
-  @post = Post.find(params[:id])
-  erb :post_by_id
-end
-
-post "/post/:id/new_comment" do
+post '/post/:id/votes' do
   post = Post.find(params[:id])
-  comment = Comment.create(comment: params[:comment])
-  current_user.comments << comment
-  post.comments << comment
-  redirect "/post/#{post.id}"
-
+  user = current_user.id
+  puts "9" * 80
+  puts user
+  postvote = PostVote.create(user_id: user, post_id: post.id)
+  # puts "PostVote: #{postvote}"
+  redirect "/"
 end
-
-get "/post/create/:id" do
-   @user = User.find(params[:id])
-  erb :new_post
-end
-
-post '/create/posts/:id' do
-
-  post = Post.create(params[:post])
-  current_user.posts << post
-
-  redirect "/post/#{post.id}"
-
-
-end
-
-

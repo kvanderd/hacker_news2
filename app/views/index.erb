@@ -1,4 +1,19 @@
+<% if current_user %>
+
+<% @all_posts.each do |post| %>
+  <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
+  <a class="upvote" href='/post/<%= post.id %>/votes'>Upvote</a>
+  <p><%= post.body %></p>
+<% end %>
+
+
+<% else %>
+
+
+
 <% @all_posts.each do |post| %>
   <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
   <p><%= post.body %></p>
+<% end %>
+
 <% end %>
