@@ -7,7 +7,9 @@ $(document).ready(function() {
       method: "post",
       url: vote.attr('href')
      }).done(function(response) {
-      console.log('got response'); 
+      debugger;
+        console.log('Response: ' + response);
+        window.location.replace("/"); 
      });
   });
   // This is called after the document has loaded in its entirety

@@ -13,11 +13,10 @@ end
 
 
 post '/post/:id/votes' do
+  content_type :json
   post = Post.find(params[:id])
   user = current_user.id
-  puts "9" * 80
-  puts user
   postvote = PostVote.create(user_id: user, post_id: post.id)
-  # puts "PostVote: #{postvote}"
-  redirect "/"
+  # redirect "/"
+  {postvote: "postvote"}.to_json
 end

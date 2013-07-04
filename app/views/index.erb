@@ -2,14 +2,13 @@
 
 <% @all_posts.each do |post| %>
   <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
+  <p><%= post.user.user_name %></p>
   <a class="upvote" href='/post/<%= post.id %>/votes'>Upvote</a>
+  <%= post.post_votes.count %>
   <p><%= post.body %></p>
 <% end %>
 
-
 <% else %>
-
-
 
 <% @all_posts.each do |post| %>
   <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
